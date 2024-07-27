@@ -29,6 +29,7 @@ const Menu = () => {
         <div className="max-w-sm shadow overflow-hidden w-full p-3 ">
           <img
             src={productDisplay.image}
+            alt="img"
             className="hover:scale-105 transition-all"
           />
         </div>

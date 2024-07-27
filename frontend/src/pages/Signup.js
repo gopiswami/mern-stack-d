@@ -37,9 +37,7 @@ const Signup = () => {
       };
     });
   };
-  {
-    /**handle uploading profile pic */
-  }
+
   const handleUploadProfilePhoto = async (e) => {
     const data = await imagetoBase64(e.target.files[0]);
 
@@ -50,12 +48,7 @@ const Signup = () => {
       };
     });
   };
-  {
-    /**handle submit for signup to check for eligibility
-     **check also if password is same to confirm password
-     **fetch api
-     */
-  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { firstName, lastName, email, password, confirmPassword } = data;
@@ -91,10 +84,9 @@ const Signup = () => {
       <div className="w-full max-w-sm bg-white m-auto flex items-center flex-col p-4">
         {/*<h1 className='text-center text-2xl'>Signup</h1>*/}
         <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md relative ">
-          {/*animated signup gif in form*/}
           <img
             src={data.image ? data.image : loginAnimation}
-            className="w-full h-full"
+            className="w-full h-full" alt="img"
           />
           {/* upload profile pic */}
           <label htmlFor="profilePhoto">

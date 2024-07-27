@@ -3,7 +3,7 @@ import Header from './component/header.js';
 import  { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
 import { setDataProduct } from './redux/productSlice.js';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 //This is the index file
 
@@ -17,7 +17,7 @@ function App() {
       const resData = await res.json();
       dispatch(setDataProduct(resData));
     })();
-  }, []);
+  });
 
   return (
     <>

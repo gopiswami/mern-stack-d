@@ -15,29 +15,29 @@ const Cart = () => {
   const user = useSelector(state => state.user)
   
   //handle payment using stripe
-    const handlePayment = async()=>{
-      if(user.email){
-    const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
-    const res = await fetch(`http://localhost:8080/payment`,
-    {
-      method : "POST",
-      headers : {
-        "content-type" : "application/json",
-      },
-      body : JSON.stringify(productCartItem)
-    })
-    if (res.statusCode === 500) return;
-    const data = await res.json()
-    toast("Redirect to payment Gateway...!")
-    stripePromise.redirectToCheckout({sessionId : data})
-  }
-  else{
-    toast("You have not Login!")
-    setTimeout(()=>{
-      navigate("/login")
-    },1000)
-  }
-  }
+  //   const handlePayment = async()=>{
+  //     if(user.email){
+  //   const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
+  //   const res = await fetch(`http://localhost:8080/payment`,
+  //   {
+  //     method : "POST",
+  //     headers : {
+  //       "content-type" : "application/json",
+  //     },
+  //     body : JSON.stringify(productCartItem)
+  //   })
+  //   if (res.statusCode === 500) return;
+  //   const data = await res.json()
+  //   toast("Redirect to payment Gateway...!")
+  //   stripePromise.redirectToCheckout({sessionId : data})
+  // }
+  // else{
+  //   toast("You have not Login!")
+  //   setTimeout(()=>{
+  //     navigate("/login")
+  //   },1000)
+  // }
+  // }
 
   return (
     <div>

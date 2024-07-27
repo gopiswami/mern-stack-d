@@ -21,7 +21,7 @@ const Login = () => {
 
   const navigate = useNavigate()
 //state changes
- const userData = useSelector(state => state)
+//  const userData = useSelector(state => state)
  //send data to redux store
  const dispatch = useDispatch()
 
@@ -34,7 +34,7 @@ const Login = () => {
       };
     });
   };
-  {/**handle submit */}
+
   const handleSubmit = async(e) =>{
     e.preventDefault()
     const {email,password} = data
@@ -71,7 +71,7 @@ const Login = () => {
       {/*<h1 className='text-center text-2xl'>Signup</h1>*/}
       <div className="w-20 overflow-hidden rounded-full drop-shadow-md shadow-md">
         {/*animated signup gif in form*/}
-        <img src={loginAnimation} className="w-full" />
+        <img src={loginAnimation} className="w-full" alt='img'/>
       </div>
       <form className="w-full py-3 flex flex-col"onSubmit={handleSubmit}>
        <label htmlFor="email">Email</label>
