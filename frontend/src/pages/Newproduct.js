@@ -38,7 +38,7 @@ const Newproduct = () => {
     const { name, image, category, price } = data;
     if (name && image && category && price) {
       const fetchData = await fetch(
-        `http://http://54.87.91.66:8000//uploadProduct`,
+        `http://54.87.91.66:8000/uploadProduct`,
         {
           method: "POST",
           headers: {
