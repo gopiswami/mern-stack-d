@@ -5,21 +5,46 @@ const mongoose = require("mongoose");
 const { reset } = require("nodemon");
 const dotenv = require("dotenv").config();
 const Stripe = require("stripe");
+const path = require('path');
+const fs = require('fs');
 
+//express api
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
 const PORT = process.env.PORT || 8000;
 
-mongoose
-  .connect('mongodb://localhost:27017/test', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("connected to Database successfully"))
-  .catch((error) => console.log("error in connection to Database"));
 
+
+
+// Read the CA certificate file
+
+const dbURI = 'mongodb://username:password@your.mongodb.uri.com/yourDatabase?tls=true';
+
+// Path to your RSA private key file
+const keyFilePath = '/Users/dillikarchaitanya/Downloads/ad.pem';
+
+// Read the RSA private key from the file
+const rsaPrivateKey = fs.readFileSync(keyFilePath, 'utf8');
+
+// Set up the Mongoose connection options
+const options = {
+  tls: true,
+  tlsCAFile: rsaPrivateKey, // Use the private key in the connection options
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
+// Connect to MongoDB using Mongoose
+mongoose.connect(dbURI, options)
+  .then(() => {
+    console.log('Connected to the database!');
+  })
+  .catch((error) => {
+    console.error('Error in connection to Database:', error);
+    process.exit(1); // Exit the application if the connection fails
+  });
 //Schema
 const userSchema = mongoose.Schema({
   firstName: String,

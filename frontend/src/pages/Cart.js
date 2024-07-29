@@ -18,7 +18,7 @@ const Cart = () => {
   //   const handlePayment = async()=>{
   //     if(user.email){
   //   const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
-  //   const res = await fetch(`http://localhost:8080/payment`,
+  //   const res = await fetch(`http://http://54.87.91.66:8000//payment`,
   //   {
   //     method : "POST",
   //     headers : {

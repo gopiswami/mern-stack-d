@@ -40,7 +40,7 @@ const Login = () => {
     const {email,password} = data
   if (email && password){
     const fetchData = await fetch(
-      `http://localhost:8080/login`,
+      `http://http://54.87.91.66:8000//login`,
       {
         method: "POST",
         headers: {
