@@ -18,34 +18,29 @@ const PORT = process.env.PORT || 8000;
 
 
 
-// Read the CA certificate file
+// Connection string to the remote DocumentDB endpoint (should not use localhost here)
+const connectionString = 'mongodb://mern:mern1234@localhost:27018/?retryWrites=false&readPreference=primary&tls=true';
 
-const dbURI = 'mongodb://username:password@your.mongodb.uri.com/yourDatabase?tls=true';
+const caPath = path.resolve(__dirname, 'global-bundle.pem');
+const caFileContent = fs.readFileSync(caPath);
 
-// Path to your RSA private key file
-const keyFilePath = '/Users/dillikarchaitanya/Downloads/ad.pem';
-
-// Read the RSA private key from the file
-const rsaPrivateKey = fs.readFileSync(keyFilePath, 'utf8');
-
-// Set up the Mongoose connection options
-const options = {
-  tls: true,
-  tlsCAFile: rsaPrivateKey, // Use the private key in the connection options
+mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-};
+  tlsCAFile: caPath // Ensure the path is correct
+});
 
-// Connect to MongoDB using Mongoose
-mongoose.connect(dbURI, options)
-  .then(() => {
-    console.log('Connected to the database!');
-  })
-  .catch((error) => {
-    console.error('Error in connection to Database:', error);
-    process.exit(1); // Exit the application if the connection fails
-  });
-//Schema
+mongoose.connection.on('connected', () => {
+  console.log('Connected to DocumentDB through SSH tunnel');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('Error connecting to DocumentDB:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('Disconnected from DocumentDB');
+});
 const userSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
