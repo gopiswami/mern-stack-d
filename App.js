@@ -12,11 +12,11 @@ function App() {
   const dispatch = useDispatch();
   // const productData = useSelector((state) => state.product);
   useEffect(() => {
-    // (async () => {
-    //   const res = await fetch(`http://localhost:8080/product`);
-    //   const resData = await res.json();
-    //   dispatch(setDataProduct(resData));
-    // })();
+    (async () => {
+      const res = await fetch(`http://localhost:5000/product`);
+      const resData = await res.json();
+      dispatch(setDataProduct(resData));
+    })();
   });
 
   return (

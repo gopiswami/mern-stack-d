@@ -56,7 +56,7 @@ const Signup = () => {
       if (password === confirmPassword) {
         //callback function for fetch
         const fetchData = await fetch(
-          `http://54.87.91.66:8000/signup`,
+          `http://localhost:8080/signup`,
           {
             method: "POST",
             headers: {
