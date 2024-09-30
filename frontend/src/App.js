@@ -13,7 +13,7 @@ function App() {
   // const productData = useSelector((state) => state.product);
   useEffect(() => {
     // (async () => {
-    //   const res = await fetch(`http://localhost:8080/product`);
+    //   const res = await fetch(`http://localhost:8000/product`);
     //   const resData = await res.json();
     //   dispatch(setDataProduct(resData));
     // })();

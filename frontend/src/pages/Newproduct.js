@@ -38,7 +38,7 @@ const Newproduct = () => {
     const { name, image, category, price } = data;
     if (name && image && category && price) {
       const fetchData = await fetch(
-        `http://localhost:8080/uploadProduct`,
+        `http://localhost:8000/uploadProduct`,
         {
           method: "POST",
           headers: {

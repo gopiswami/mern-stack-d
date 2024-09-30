@@ -12,7 +12,7 @@ services:
     image: chaitanya751293/mern:backend-latest
     container_name: backend-container
     ports:
-      - "8080:8080"  # Map port 5000 on the host to port 5000 on the container
+      - "8000:8000"  # Map port 5000 on the host to port 5000 on the container
     networks:
       - mern-network
 networks:
